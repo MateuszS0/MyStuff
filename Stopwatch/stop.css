@@ -1,0 +1,28 @@
+body {
+    background: linear-gradient(to bottom, #4fd858, #5b65eb);
+    min-height: 639px;
+}
+.Box {
+    margin: auto;
+    width: 250px;
+    border: 1px solid black;
+    display: flex;
+    padding: 1px;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+h1,.Time {
+    text-align: center;
+}
+.Button {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    margin: auto;
+    width: 200px;
+    height: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
