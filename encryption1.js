@@ -9,7 +9,7 @@ let temp = ['']
 let tempAr = ['']
 let nr = [0]
 let string = [" "]
-let result = ""
+let result 
 
 btn.addEventListener('click',()=>{
     Key = key.value
