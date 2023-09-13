@@ -1,4 +1,4 @@
-require("dotenv").config()
+// require("dotenv").config()
 
 
 fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCXuqSBlHAE6Xw-yeJA0Tunw&maxResults=8&order=relevance&key=[YOUR_API_KEY]")
