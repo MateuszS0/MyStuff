@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    height: 100vh;
+    background: linear-gradient(180deg, rgb(44, 11, 66) 0%, rgb(12, 12, 97) 100%);
+    color: rgb(192, 191, 191)
+}
+
+.text_gradient {
+    color: linear-gradient(90deg, green 0%, black 100%);
+}
