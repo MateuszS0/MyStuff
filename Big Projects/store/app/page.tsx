@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Searchbar from '@/components/Searchbar'
-import Carousel from '@/components/Carousel'
+import HCarousel from '@/components/HCarousel'
 
 
 const Home = () => {
@@ -26,7 +26,7 @@ const Home = () => {
 
           <Searchbar/>
         </div>
-        <Carousel/>
+        <HCarousel/>
       </div>
 
     </section>
