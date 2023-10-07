@@ -26,6 +26,7 @@ const Searchbar = () => {
     try {
       SetisLoading(true)
       //Scrape products from amazon
+      
     } catch (error) {
       console.log(error);
       
