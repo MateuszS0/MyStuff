@@ -19,8 +19,8 @@ const Home = () => {
             />
           </p>
           <h1 className='head-text'>
-            Unleash the Power of
-            <span className='text-primary'> Priceful</span>
+            Welcome to
+            <span className='text-primary'> Priceless</span>
           </h1>
           <p className='mt-6'>Some description</p>
 

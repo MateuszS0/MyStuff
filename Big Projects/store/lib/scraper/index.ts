@@ -52,7 +52,7 @@ export async function scrapeAmazonProduct(url: string) {
         let discountRate = $('.savingsPercentage').text().replace(/[-%]/g, "");
 
 
-        if (1==1) {
+        if (1==1) { //change this later
             originalPrice = parseInt(originalPrice); 
             let currentPriceNumeric = parseInt(currentPrice); 
             let discountRateNumeric = parseInt(discountRate.trim());
