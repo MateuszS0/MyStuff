@@ -37,14 +37,17 @@ export async function scrapeAmazonProduct(url: string) {
 
         const originalPrice = extractPrice(
             $('#priceblock_ourprice'),
-            $('span.a-offscreen a-price.a-text-price'),
-            $('span.a-price a-text-price'),
-            $('#listPrice'),
-            $('#priceblock_dealprice'),
-            $('#corePriceDisplay_mobile_feature_div'),
-            $('a-size-base.a-color-price'),
-        );
-        console.log("title: " +title, "\ncurrent Price: "+currentPrice, "\noriginal Price: "+originalPrice);
+            $('span.a-offscreen .a-price.a-text-price'),
+            $('.a-price a-text-price'),
+            $('.a-size-base.a-color-price'),
+            $('span.a-price-whole'),
+        ); 
+        const outOfStock = $('#availability span').text().trim() === 'Out of stock';
+        const image = $('#imgBlkFront').attr('data-a-dynamic-image') ||
+        $('#landingImage').attr('data-a-dynamic-image') 
+        
+        console.log("title: " +title, "\ncurrent Price: "+currentPrice, "\noriginal Price: "+originalPrice, 
+        "\nout of stock: "+outOfStock, "\nimage: " + image);
 
     } catch (error: any) {
         throw new Error(`Failed to scrape product: ${error.message}`)

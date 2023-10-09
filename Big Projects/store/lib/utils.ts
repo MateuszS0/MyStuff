@@ -3,7 +3,7 @@ export function extractPrice(...elements: any) {
         const priceText = element.text().trim();
 
         if (priceText) {
-            return priceText.replace(/\D/g, '');
+            return priceText.replace(/[^\d.]/g, '');
     }
     return '';
     }
