@@ -1,8 +1,10 @@
 import React from 'react'
-
-const ProductDetails = () => {
+type Props = {
+  params: {id: string}
+}
+const ProductDetails = ({params: {id}}: Props) => {
   return (
-    <div>ProductDetails</div>
+    <div>{id}</div>
   )
 }
 
