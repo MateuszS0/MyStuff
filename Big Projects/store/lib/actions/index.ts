@@ -47,31 +47,31 @@ export async function scrapeAndStoreProduct(productUrl: string) {
   }
 }
 
-// export async function getProductById(productId: string) {
-//   try {
-//     connectToDB();
+export async function getProductById(productId: string) {
+  try {
+    connectToDB();
 
-//     const product = await Product.findOne({ _id: productId });
+    const product = await Product.findOne({ _id: productId });
 
-//     if(!product) return null;
+    if(!product) return null;
 
-//     return product;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
+    return product;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-// export async function getAllProducts() {
-//   try {
-//     connectToDB();
+export async function getAllProducts() {
+  try {
+    connectToDB();
 
-//     const products = await Product.find();
+    const products = await Product.find();
 
-//     return products;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
+    return products;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 // export async function getSimilarProducts(productId: string) {
 //   try {
