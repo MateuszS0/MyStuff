@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
-import { extractCurrency, extractPrice } from "../utils";
+import { extractCurrency, extractDescription, extractPrice } from "../utils";
 
 export async function scrapeAmazonProduct(url: string) {
     if(!url) return;
@@ -50,7 +50,7 @@ export async function scrapeAmazonProduct(url: string) {
         const imageUrls = Object.keys(JSON.parse(images));
         const currency = extractCurrency($('.a-price-symbol'));
         let discountRate = $('.savingsPercentage').text().replace(/[-%]/g, "");
-
+        const description = extractDescription($)
 
         if (1==1) { //change this later
             originalPrice = parseInt(originalPrice); 
@@ -59,8 +59,27 @@ export async function scrapeAmazonProduct(url: string) {
             
             originalPrice = (currentPriceNumeric / (100 - discountRateNumeric)) *100 
           }
-        console.log("title: " +title, "\ncurrent Price: "+currentPrice, "\noriginal Price: "+originalPrice, 
-        "\nout of stock: "+outOfStock, "\nimages: " + imageUrls, "\nCurrency: "+ currency, "\nDiscount Rate: "+ discountRate);
+          const data = {
+            url,
+            currency: currency || '$',
+            image: imageUrls[0],
+            currentPrice: Number(currentPrice).toFixed(2) || Number(originalPrice).toFixed(2),
+            originalPrice: Number(originalPrice).toFixed(2) || Number(currentPrice).toFixed(2),
+            PriceHistory: [],
+            discountRate: Number(discountRate),
+            category: 'category',
+            stars:4.5,
+            outOfStock: outOfStock,
+            description: description,
+            lowestPrice: Number(currentPrice) || Number(originalPrice),
+            highestPrice: Number(originalPrice) || Number(currentPrice),
+            average: Number(currentPrice) || Number(originalPrice),
+          }
+          
+          return data;
+          
+        // console.log("title: " +title, "\ncurrent Price: "+currentPrice, "\noriginal Price: "+originalPrice, 
+        // "\nout of stock: "+outOfStock, "\nimages: " + imageUrls, "\nCurrency: "+ currency, "\nDiscount Rate: "+ discountRate);
     } catch (error: any) {
         throw new Error(`Failed to scrape product: ${error.message}`)
     }
