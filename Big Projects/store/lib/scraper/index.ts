@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 import * as cheerio from 'cheerio';
-import { extractCurrency, extractDescription, extractPrice } from '../utils';
+import { extractCurrency, extractDescription, extractPrice, getAveragePrice, getHighestPrice, getLowestPrice } from '../utils';
 
 export async function scrapeAmazonProduct(url: string) {
   if(!url) return;
@@ -81,9 +81,12 @@ export async function scrapeAmazonProduct(url: string) {
       stars: 4.5,
       isOutOfStock: outOfStock,
       description,
-      lowestPrice: Number(currentPrice) || Number(originalPrice),
-      highestPrice: Number(originalPrice) || Number(currentPrice),
-      averagePrice: Number(currentPrice) || Number(originalPrice),
+      lowestPrice: getLowestPrice([originalPrice, currentPrice]) || Number(currentPrice),
+      highestPrice: getHighestPrice([originalPrice, currentPrice]) || Number(originalPrice),
+      averagePrice: getAveragePrice([originalPrice, currentPrice]) || Number(currentPrice),
+    }
+    if (data.averagePrice == data.currentPrice || data.averagePrice == data.originalPrice) {
+      data.averagePrice =(data.originalPrice + data.currentPrice)/2
     }
 
     return data;
