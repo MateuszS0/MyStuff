@@ -7,6 +7,7 @@ import { formatNumber } from '@/lib/utils';
 import PriceInfoCard from '@/components/PriceInfoCard';
 import {redirect} from "next/navigation";
 import ProductCard from '@/components/ProductCard';
+import Modal from '@/components/Modal';
 
 // scrape %
 type Props = {
@@ -145,7 +146,7 @@ const ProductDetails = async ({ params: { id } }: Props) => {
               />
             </div>
           </div>
-
+          <Modal productId={id}/>
         </div>
       </div>
       <div className="flex flex-col gap-16">
