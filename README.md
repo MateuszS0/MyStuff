@@ -1,2 +1,2 @@
-# MyCode
-Here i store some of my Projects, more in private repositories.
+# Test-Projects
+Here i store some of my small test Projects, more in private repositories.
